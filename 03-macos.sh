@@ -24,7 +24,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # # Set standby delay to 24 hours (86400 seconds)
 # # Default is 1 hour (3600 seconds)
-# sudo pmset -a standbydelay 3600
+sudo pmset -a standbydelay 3600
 
 # # Disable the sound effects on boot
 # sudo nvram SystemAudioVolume=" "
@@ -73,7 +73,7 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "Automatic"
 # defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
 # # Disable the "Are you sure you want to open this application?" dialog
-# defaults write com.apple.LaunchServices LSQuarantine -bool false
+defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # # Remove duplicates in the "Open With" menu (also see `fixopenwith` alias)
 # /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
@@ -162,14 +162,18 @@ defaults write NSGlobalDomain com.apple.sound.beep.volume -float 0.6065307
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
 
+# Trackpad: turn on three finger drag
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -int 1
+defaults write com.apple.AppleMultitouchTrackpad com.apple.driver.AppleBluetoothMultitouch.trackpad -int 1
+
 # Trackpad: use three finger tap to Look up & data detectors
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerTapGesture -int 2
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -int 2
 
-# # Trackpad: enable tap to click for this user and for the login screen
-# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-# defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-# defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+# Trackpad: enable tap to click for this user and for the login screen
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 # # Trackpad: map bottom right corner to right-click
 # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
@@ -216,7 +220,7 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 25
 # # This should supposedly set up the clock to display YYYY-MM-DD h:m a
 # # But it sticks with default "MMM d  h:mm a"
 # # Let's use itsycal instead (installed with brew)
-# defaults write com.apple.menuextra.clock "DateFormat" -string "y-MM-dd h:mm a"
+defaults write com.apple.menuextra.clock "DateFormat" -string "y-MM-dd h:mm a"
 
 # Show language menu in the top right corner of the boot screen
 sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
@@ -236,7 +240,7 @@ defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 5
 
 # # Save screenshots to the desktop
-# defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+defaults write com.apple.screencapture location -string "${HOME}/Desktop"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
@@ -290,7 +294,7 @@ defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
 # # Keep folders on top when sorting by name
-# defaults write com.apple.finder _FXSortFoldersFirst -bool true
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
 # When performing a search, default mode
 # current folder: "SCcf"
@@ -360,7 +364,7 @@ defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 
 # # Disable the warning before emptying the Trash
-# defaults write com.apple.finder WarnOnEmptyTrash -bool false
+defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
 # # Enable AirDrop over Ethernet and on unsupported Macs running Lion
 # defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
@@ -390,13 +394,13 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 defaults write com.apple.dock mouse-over-hilite-stack -bool true
 
 # Set the icon size of Dock items to 36 pixels
-defaults write com.apple.dock tilesize -int 36
+defaults write com.apple.dock tilesize -int 50
 
 # # Change minimize/maximize window effect ("genie", "scale")
 # defaults write com.apple.dock mineffect -string "scale"
 
 # # Minimize windows into their application's icon
-# defaults write com.apple.dock minimize-to-application -bool true
+defaults write com.apple.dock minimize-to-application -bool true
 
 # Enable spring loading for all Dock items
 defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
@@ -407,7 +411,7 @@ defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
 # # Wipe all (default) app icons from the Dock
 # # This is only really useful when setting up a new Mac, or if you don't use
 # # the Dock to launch apps.
-# defaults write com.apple.dock persistent-apps -array
+defaults write com.apple.dock persistent-apps -array
 
 # # Show only open applications in the Dock
 # defaults write com.apple.dock static-only -bool true
@@ -437,7 +441,7 @@ defaults write com.apple.dock mru-spaces -bool false
 # defaults write com.apple.dock autohide-time-modifier -float 0
 
 # # Automatically hide and show the Dock
-# defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock autohide -bool true
 
 # Don’t show recent applications in Dock
 defaults write com.apple.dock show-recents -bool false
@@ -446,7 +450,7 @@ defaults write com.apple.dock show-recents -bool false
 defaults write com.apple.dock showhidden -bool true
 
 # Disable the Launchpad gesture (pinch with thumb and three fingers)
-defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
+# defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
 
 # # Reset Launchpad, but keep the desktop wallpaper intact
 # find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
@@ -477,17 +481,17 @@ defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
 # 262144: Control
 # 131072: Shift
 # Top left screen corner → Mission Control
-defaults write com.apple.dock wvous-tl-corner -int 2
-defaults write com.apple.dock wvous-tl-modifier -int 262144
+# defaults write com.apple.dock wvous-tl-corner -int 2
+# defaults write com.apple.dock wvous-tl-modifier -int 262144
 # Top right screen corner → Application Windows
-defaults write com.apple.dock wvous-tr-corner -int 3
-defaults write com.apple.dock wvous-tr-modifier -int 262144
+# defaults write com.apple.dock wvous-tr-corner -int 3
+# defaults write com.apple.dock wvous-tr-modifier -int 262144
 # Bottom left screen corner → Start screen saver
-defaults write com.apple.dock wvous-bl-corner -int 5
-defaults write com.apple.dock wvous-bl-modifier -int 262144
+# defaults write com.apple.dock wvous-bl-corner -int 5
+# defaults write com.apple.dock wvous-bl-modifier -int 262144
 # Bottom right screen corner → Desktop
-defaults write com.apple.dock wvous-br-corner -int 4
-defaults write com.apple.dock wvous-br-modifier -int 262144
+# defaults write com.apple.dock wvous-br-corner -int 4
+# defaults write com.apple.dock wvous-br-modifier -int 262144
 
 ###############################################################################
 # Safari & WebKit                                                             #
@@ -692,7 +696,7 @@ tell application "Terminal"
     local allOpenedWindows
     local initialOpenedWindows
     local windowID
-    set themeName to "Kakhi"
+    set themeName to "Khaki"
 
     (* Store the IDs of all the open terminal windows. *)
     set initialOpenedWindows to id of every window
@@ -731,6 +735,19 @@ tell application "Terminal"
     (* Wait a little bit to ensure that the custom theme is added. *)
     delay 1
 
+    set themeName to "Custom"
+
+    (* Store the IDs of all the open terminal windows. *)
+    set initialOpenedWindows to id of every window
+
+    (* Open the custom theme so that it gets added to the list
+       of available terminal themes (note: this will open two
+       additional terminal windows). *)
+    do shell script "open '$HOME/init/" & themeName & ".terminal'"
+
+    (* Wait a little bit to ensure that the custom theme is added. *)
+    delay 1
+    
     (* Set the custom theme as the default terminal theme. *)
     set default settings to settings set themeName
 
@@ -759,8 +776,8 @@ EOD
 
 # # Enable "focus follows mouse" for Terminal.app and all X11 apps
 # # i.e. hover over a window and start typing in it without clicking first
-# defaults write com.apple.terminal FocusFollowsMouse -bool true
-# defaults write org.x.X11 wm_ffm -bool true
+defaults write com.apple.terminal FocusFollowsMouse -bool true
+defaults write org.x.X11 wm_ffm -bool true
 
 # # Enable Secure Keyboard Entry in Terminal.app
 # # See: https://security.stackexchange.com/a/47786/8918

@@ -7,7 +7,7 @@ cask_args appdir: '/Applications'
 
 # List of brew repositories
 tap 'homebrew/bundle'
-tap 'caskroom/versions'
+tap 'homebrew/cask-versions'
 
 # Use GNU instead of BSD commands
 # the with-default-names uses normal name, rather than g-prefixed
@@ -98,25 +98,26 @@ brew 'heroku/brew/heroku'
 
 # Install additional applications
 
-cask '1password'  # 1Password 7
+# cask '1password'  # 1Password 7
 cask 'slack'
 cask 'visual-studio-code'
-cask 'sublime-text'
+# cask 'sublime-text'
 cask 'jupyter-notebook-viewer'
 cask 'spectacle'  # window manager
-cask 'itsycal'
-cask 'keybase'
+# cask 'itsycal'
+# cask 'keybase'
 cask 'firefox'
-cask 'vlc'
-cask 'omnidisksweeper'
+# cask 'vlc'
+# cask 'omnidisksweeper'
 cask 'protonvpn'  # VPN
-cask 'wordservice'
-cask 'kindle'
-cask 'oversight'  # alert on camera or mic usage
-cask 'mactex-no-gui'  # latex
+# cask 'wordservice'
+# cask 'kindle'
+# cask 'oversight'  # alert on camera or mic usage
+# cask 'mactex-no-gui'  # latex
 cask 'docker'
 cask 'postico'  # databases
 cask 'postgres'  # add to ~/.bash_profile: PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+cask 'typora' # note taking app
 
 # # Not installing these applications via brew cask
 
@@ -167,17 +168,17 @@ cask 'betterzip'  # preview archives
 # Install apps via Mac App Store
 # mas 'Mail Notifr', id: 808154494
 mas 'The Unarchiver', id: 425424353
-mas 'Deliveries', id: 924726344
+# mas 'Deliveries', id: 924726344
 mas 'Amphetamine', id: 937984704  # replacement for Caffeine
 mas 'JustFocus', id: 1142151959
-mas 'Wipr', id: 1320666476
+# mas 'Wipr', id: 1320666476
 mas 'Binaural', id: 946812450
 mas 'Keynote', id: 409183694
 mas 'Numbers', id: 409203825
 mas 'Pages', id: 409201541
 mas 'Table Tool', id: 1122008420  # CSV viewer/editor and quicklook
 mas 'Tot', id: 1491071483
-mas 'DuckDuckGo Privacy Essentials', id: 1482920575
+# mas 'DuckDuckGo Privacy Essentials', id: 1482920575
 # mas '1Password', id: 1333542190  # 1Password 7
 # mas 'GarageBand', id: 682658836
 # mas 'iMovie', id: 408981434

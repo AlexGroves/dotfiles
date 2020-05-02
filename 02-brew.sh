@@ -35,4 +35,4 @@ fi;
 brew cleanup
 
 # use autocomplete with the Heroku CLI tools
-heroku autocomplete --refresh-cache
+# heroku autocomplete --refresh-cache
