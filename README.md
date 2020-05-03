@@ -1,6 +1,6 @@
-# Matt's dotfiles
+# Alex's dotfiles
 
-This repo borrows heavily from Mathias Bynens's [dotfiles](https://github.com/mathiasbynens/dotfiles/) and Dries Vints's [dotfiles](https://github.com/driesvints/dotfiles).
+This repo was forked from Matt Mollison's [dotfiles](https://github.com/warmlogic/dotfiles), which borrows heavily from Mathias Bynens's [dotfiles](https://github.com/mathiasbynens/dotfiles/) and Dries Vints's [dotfiles](https://github.com/driesvints/dotfiles).
 
 This also includes `tmux` files from [this repo](https://github.com/gpakosz/.tmux).
 
@@ -19,10 +19,10 @@ Some of the functionality of these dotfiles depends on formulae installed by `02
     1. [Log in to GitHub](https://github.com/login)
     1. [Add your new public key to your GitHub account settings](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/) [here](https://github.com/settings/keys): `pbcopy < ~/.ssh/id_rsa.pub`
 1. Clone this repo
-    1. `mkdir -p ~/github/warmlogic`
-    1. `cd ~/github/warmlogic/`
-    1. `git clone git@github.com:warmlogic/dotfiles.git`
-    1. `cd ~/github/warmlogic/dotfiles/`
+    1. `mkdir -p ~/code/github/`
+    1. `cd ~/code/github/`
+    1. `git clone git@github.com:AlexGroves/dotfiles.git`
+    1. `cd ~/github/dotfiles/`
 1. Run `01-bootstrap.sh` to copy necessary files (hidden and otherwise)
 1. `cp .extra ~/.extra` and edit, if desired (explained below)
 1. If installing Mac App Store apps with Brew, sign in to the Mac App Store
@@ -40,7 +40,7 @@ More details below.
 
 ### Using Git and the bootstrap script
 
-Clone the repository wherever you want (I keep it in `~/github/warmlogic/dotfiles`). The bootstrapper script (`01-bootstrap.sh`) will pull in the latest version and copy the files to your home folder.
+Clone the repository wherever you want (I keep it in `~/code/github/dotfiles`). The bootstrapper script (`01-bootstrap.sh`) will pull in the latest version and copy the files to your home folder. **You probably don't want to run the boostrap script the first time, since you'll want to update the settings for your environment**.
 
 `cd` into your local `dotfiles` repository, and start the installation:
 
@@ -68,7 +68,7 @@ NB: `~/.extra` is included in the repo, but it is not automatically copied over 
 cp .extra ~/.extra
 ```
 
-You can also use `~/.extra` to override settings, functions, and aliases. It's probably better to [fork this repository](https://github.com/warmlogic/dotfiles/fork) instead, though.
+You can also use `~/.extra` to override settings, functions, and aliases. It's probably better to [fork this repository](https://github.com/AlexGroves/dotfiles/fork) instead, though.
 
 ### Install Homebrew formulae
 
@@ -104,7 +104,6 @@ You may also want Python 3 and a number of useful packages related to data analy
 
 #### Safari Extensions
 
-- 1Password
 - [Wipr](https://apps.apple.com/us/app/wipr/id1320666476) (installed via `Brewfile`)
 - [Clean Links for Google](https://apps.apple.com/us/app/clean-links-for-google/id1467225874) (installed via `Brewfile`)
 - [Polyglot](https://apps.apple.com/us/app/polyglot/id1471801525) (installed via `Brewfile`)
@@ -171,4 +170,4 @@ These should be automatically turned on, via `.jupyter/nbconfig/notebook.js`
 
 ## Feedback
 
-Suggestions/improvements [welcome](https://github.com/warmlogic/dotfiles/issues)!
+Suggestions/improvements [welcome](https://github.com/AlexGroves/dotfiles/issues)!
